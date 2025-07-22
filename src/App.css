@@ -153,10 +153,15 @@ body {
   
   /* Mobile background fixes */
   .global-background {
-    background-attachment: scroll;
+    background-attachment: scroll !important;
   }
   
   .section-with-pattern {
+    background-attachment: scroll !important;
+  }
+  
+  /* Ensure wallpaper is visible on mobile */
+  .global-background[style*="background-image"] {
     background-attachment: scroll !important;
   }
 }
@@ -173,7 +178,22 @@ body {
   
   /* Additional mobile optimizations */
   .global-background {
-    background-size: cover;
-    background-position: center top;
+    background-size: cover !important;
+    background-position: center top !important;
+    opacity: 0.4 !important;
+  }
+  
+  /* Ensure sections with pattern work on mobile */
+  .section-with-pattern[style*="background-image"] {
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+  .global-background {
+    opacity: 0.5 !important;
   }
 }
