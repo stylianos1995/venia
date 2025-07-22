@@ -150,6 +150,15 @@ body {
   .section-header p {
     font-size: 1rem;
   }
+  
+  /* Mobile background fixes */
+  .global-background {
+    background-attachment: scroll;
+  }
+  
+  .section-with-pattern {
+    background-attachment: scroll !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -160,5 +169,11 @@ body {
   .btn {
     padding: 0.6rem 1.5rem;
     font-size: 0.9rem;
+  }
+  
+  /* Additional mobile optimizations */
+  .global-background {
+    background-size: cover;
+    background-position: center top;
   }
 }
