@@ -47,6 +47,36 @@ npm start
 - `npm test` - Launches the test runner
 - `npm run build` - Builds the app for production
 - `npm run eject` - Ejects from Create React App (one-way operation)
+- `npm run deploy` - Deploys the app to GitHub Pages
+
+## Deployment
+
+This project is configured for deployment on GitHub Pages.
+
+### Prerequisites for Deployment
+
+1. Create a GitHub repository named `venia`
+2. Push your code to the repository
+
+### Deploy to GitHub Pages
+
+1. Update the `homepage` field in `package.json` with your GitHub username:
+   ```json
+   "homepage": "https://yourusername.github.io/venia"
+   ```
+
+2. Deploy the project:
+   ```bash
+   npm run deploy
+   ```
+
+3. Go to your GitHub repository settings:
+   - Navigate to Settings > Pages
+   - Set Source to "Deploy from a branch"
+   - Select the `gh-pages` branch
+   - Save the settings
+
+4. Your portfolio will be available at `https://yourusername.github.io/venia`
 
 ## Technologies Used
 
