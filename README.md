@@ -1,15 +1,18 @@
-# Portfolio Project
+# Vaia Gialama - Portfolio
 
-A modern, responsive portfolio website built with React.
+Personal portfolio website showcasing my work in neuroscience research and biology.
+
+## Latest Update
+
+Last updated: July 24, 2025 - Enhanced with logo integration, resume download, and improved navbar functionality.
 
 ## Features
 
 - Responsive design
-- Modern UI/UX
-- Smooth animations
-- Contact form
-- Project showcase
-- Skills section
+- Professional branding
+- Downloadable resume
+- Interactive navigation
+- Research showcase
 
 ## Getting Started
 
@@ -61,16 +64,19 @@ This project is configured for deployment on GitHub Pages.
 ### Deploy to GitHub Pages
 
 1. Update the `homepage` field in `package.json` with your GitHub username:
+
    ```json
    "homepage": "https://yourusername.github.io/venia"
    ```
 
 2. Deploy the project:
+
    ```bash
    npm run deploy
    ```
 
 3. Go to your GitHub repository settings:
+
    - Navigate to Settings > Pages
    - Set Source to "Deploy from a branch"
    - Select the `gh-pages` branch
