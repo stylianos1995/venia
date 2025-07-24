@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.css';
+import logo from '../assets/images/logo.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const headerHeight = window.innerHeight;
+      setIsScrolled(scrollPosition > headerHeight * 0.8);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,9 +31,9 @@ const Header = () => {
 
   return (
     <header className="header">
-      <nav className="navbar">
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-brand">
-          <h1>Vaia Gialama</h1>
+          <img src={logo} alt="Vaia Gialama" className="nav-logo" />
         </div>
         
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
@@ -44,8 +57,8 @@ const Header = () => {
       <div className="hero" id="home">
         <div className="hero-overlay">
           <div className="hero-content">
-          <h1 className="hero-title">Hi, I'm Vaia Gialama</h1>
-          <p className="hero-subtitle">Biologist | Neuroscience Researcher | Microbiology Analyst</p>
+          <h1 className="hero-title">Hi, I'm Vaia</h1>
+          <p className="hero-subtitle">Biologist </p>
           <p className="hero-description">
             Bringing hands-on experience in aseptic techniques, GMP compliance, and cleanroom operations. 
             Passionate about bridging the gap between neuroscience research and public understanding.

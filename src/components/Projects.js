@@ -135,13 +135,6 @@ const Research = () => {
             ))}
           </div>
         </div>
-
-        <div className="research-cta">
-          <p>Interested in collaboration or research opportunities?</p>
-          <a href="#contact" className="btn btn-primary">
-            Get In Touch
-          </a>
-        </div>
       </div>
     </section>
   );

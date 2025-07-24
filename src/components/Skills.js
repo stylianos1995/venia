@@ -1,44 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Skills.css';
 
 const Skills = () => {
+  const [activeTab, setActiveTab] = useState(1);
+
   const skillCategories = [
     {
       id: 1,
       title: "Laboratory Techniques",
+      icon: "🧪",
       skills: [
-        { name: "Aseptic Techniques", level: "Expert", experience: "4+ years" },
-        { name: "Cell Culture", level: "Advanced", experience: "3+ years" },
-        { name: "Microscopic Analysis", level: "Advanced", experience: "3+ years" },
-        { name: "Blood Sampling", level: "Expert", experience: "2+ years" },
-        { name: "Cleanroom Operations", level: "Advanced", experience: "3+ years" }
+        "Aseptic Techniques",
+        "Cell Culture",
+        "Microscopic Analysis",
+        "Blood Sampling",
+        "Cleanroom Operations"
       ]
     },
     {
       id: 2,
       title: "Research & Analysis",
+      icon: "📊",
       skills: [
-        { name: "EEG Analysis", level: "Advanced", experience: "1+ year" },
-        { name: "Data Analysis", level: "Advanced", experience: "3+ years" },
-        { name: "Statistical Analysis", level: "Intermediate", experience: "2+ years" },
-        { name: "Literature Review", level: "Expert", experience: "4+ years" },
-        { name: "Scientific Writing", level: "Advanced", experience: "3+ years" }
+        "EEG Analysis",
+        "Data Analysis",
+        "Statistical Analysis",
+        "Literature Review",
+        "Scientific Writing"
       ]
     },
     {
       id: 3,
       title: "Equipment & Systems",
+      icon: "🔬",
       skills: [
-        { name: "VITEK 2 System", level: "Expert", experience: "2+ years" },
-        { name: "BIOPAC Systems", level: "Advanced", experience: "1+ year" },
-        { name: "Flow Cytometry", level: "Intermediate", experience: "2+ years" },
-        { name: "Western Blot", level: "Intermediate", experience: "2+ years" },
-        { name: "MTT Assay", level: "Expert", experience: "3+ years" }
+        "VITEK 2 System",
+        "BIOPAC Systems",
+        "Flow Cytometry",
+        "Western Blot",
+        "MTT Assay"
       ]
     }
   ];
 
-  const otherSkills = [
+  const additionalSkills = [
     "GMP Compliance",
     "ISO 15189 Standards",
     "Immunohistochemistry",
@@ -47,6 +52,13 @@ const Skills = () => {
     "Grant Writing",
     "Peer Review",
     "Quality Control"
+  ];
+
+  const languages = [
+    { name: "Greek", level: "Native", dots: 5 },
+    { name: "English", level: "Fluent", dots: 5 },
+    { name: "German", level: "B1", dots: 3 },
+    { name: "Dutch", level: "A2", dots: 2 }
   ];
 
   return (
@@ -58,18 +70,31 @@ const Skills = () => {
         </div>
 
         <div className="skills-content">
-          <div className="skills-categories">
+          {/* Tab Navigation */}
+          <div className="skills-tabs">
             {skillCategories.map(category => (
-              <div key={category.id} className="skill-category">
-                <h3>{category.title}</h3>
-                <div className="skills-grid">
+              <button
+                key={category.id}
+                className={`tab-button ${activeTab === category.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(category.id)}
+              >
+                <span className="tab-icon">{category.icon}</span>
+                <span className="tab-title">{category.title}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Tab Content */}
+          <div className="tab-content">
+            {skillCategories.map(category => (
+              <div
+                key={category.id}
+                className={`tab-panel ${activeTab === category.id ? 'active' : ''}`}
+              >
+                <div className="skills-list">
                   {category.skills.map((skill, index) => (
-                    <div key={index} className="skill-card">
-                      <div className="skill-name">{skill.name}</div>
-                      <div className="skill-details">
-                        <span className="skill-level">{skill.level}</span>
-                        <span className="skill-experience">{skill.experience}</span>
-                      </div>
+                    <div key={index} className="skill-item">
+                      <span className="skill-name">{skill}</span>
                     </div>
                   ))}
                 </div>
@@ -77,30 +102,40 @@ const Skills = () => {
             ))}
           </div>
 
-          <div className="additional-capabilities">
-            <h3>Additional Capabilities</h3>
-            <div className="capabilities-list">
-              {otherSkills.map((skill, index) => (
-                <div key={index} className="capability-tag">
-                  <span>{skill}</span>
-                </div>
-              ))}
+          {/* Additional Skills & Languages */}
+          <div className="additional-skills">
+            <div className="additional-section">
+              <h3>Additional Capabilities</h3>
+              <div className="skills-tags">
+                {additionalSkills.map((skill, index) => (
+                  <span key={index} className="skill-tag">
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div className="skills-summary">
-          <div className="summary-item">
-            <h4>Continuous Learning</h4>
-            <p>I stay current with the latest research methodologies, laboratory techniques, and scientific discoveries in neuroscience and microbiology.</p>
-          </div>
-          <div className="summary-item">
-            <h4>Precision & Accuracy</h4>
-            <p>I maintain the highest standards in laboratory procedures, ensuring reliable and reproducible results in all research and diagnostic work.</p>
-          </div>
-          <div className="summary-item">
-            <h4>Science Communication</h4>
-            <p>I effectively translate complex scientific concepts into accessible content, bridging the gap between research and public understanding.</p>
+            <div className="additional-section">
+              <h3>Languages</h3>
+              <div className="languages-matrix">
+                {languages.map((language, index) => (
+                  <div key={index} className="language-item">
+                    <div className="language-info">
+                      <span className="language-name">{language.name}</span>
+                      <span className="language-level">{language.level}</span>
+                    </div>
+                    <div className="dots-container">
+                      {[...Array(5)].map((_, dotIndex) => (
+                        <span 
+                          key={dotIndex} 
+                          className={`dot ${dotIndex < language.dots ? 'filled' : 'empty'}`}
+                        ></span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

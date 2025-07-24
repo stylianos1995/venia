@@ -7,12 +7,10 @@ const About = () => {
       <div className="container">
         <div className="section-header">
           <h2>About Me</h2>
-          <p>Get to know me better</p>
         </div>
         
         <div className="about-content">
           <div className="about-text">
-            <h3>Who I Am</h3>
             <p>
               I'm Vaia Gialama, a Biologist and Neuroscience Researcher with hands-on experience 
               in aseptic techniques, GMP compliance, and cleanroom operations gained through 
@@ -27,36 +25,13 @@ const About = () => {
               and public understanding through innovative science communication.
             </p>
 
-            <div className="about-details">
-              <div className="detail-item">
-                <h4>Education</h4>
-                <p>MSc in Neuroscience</p>
-                <p>University of Thessaly</p>
-                <p>GPA: 8.63/10</p>
-              </div>
-              
-              <div className="detail-item">
-                <h4>Location</h4>
-                <p>Maastricht, Netherlands</p>
-                <p>Available for opportunities</p>
-              </div>
-              
-              <div className="detail-item">
-                <h4>Interests</h4>
-                <p>Neuroscience Research</p>
-                <p>Microbiology Analysis</p>
-                <p>Science Communication</p>
-              </div>
-            </div>
-
             <div className="about-cta">
               <a 
-                href="/src/assets/documents/Resume_Vaia_Gialama.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer"
+                href="/Resume_Vaia_Gialama.pdf" 
                 className="btn btn-primary"
+                download="Resume_Vaia_Gialama.pdf"
               >
-                Download Resume
+                📄 Download Resume
               </a>
             </div>
           </div>
@@ -68,6 +43,32 @@ const About = () => {
                 <p>Add your photo here</p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* About Details moved below the text-photo grid */}
+        <div className="about-details">
+          <div className="detail-item education-item">
+            <h4>Education</h4>
+            <p>MSc in Neuroscience-Neurorehabilitation</p>
+            <p>BSc in Biological Appliances & Technology</p>
+            <div className="gpa-info">
+              <span className="gpa-text">MSc GPA: 8.63/10</span>
+              <span className="gpa-text">BSc GPA: 7.18/10</span>
+            </div>
+          </div>
+          
+          <div className="detail-item">
+            <h4>Location</h4>
+            <p>Maastricht, Netherlands</p>
+            <p>Available for opportunities-Willing to relocate</p>
+          </div>
+          
+          <div className="detail-item">
+            <h4>Interests</h4>
+            <p>Neuroscience Research</p>
+            <p>Microbiology Analysis</p>
+            <p>Science Communication</p>
           </div>
         </div>
       </div>

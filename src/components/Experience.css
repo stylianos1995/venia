@@ -24,6 +24,27 @@
 .timeline-item {
   padding: 2rem 0;
   position: relative;
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition: all 0.8s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Remove the old animation delays since we're using scroll triggers now */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .timeline-item::before {
@@ -101,6 +122,148 @@
   margin: 1rem 0;
 }
 
+/* Tab Toggle Button */
+.tab-toggle {
+  background: transparent;
+  color: var(--color-dusty-rose);
+  border: 1px solid var(--color-dusty-rose);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 1rem;
+  transform: scale(1);
+  opacity: 0;
+  transform: scale(1) translateY(10px);
+}
+
+/* Animate button when timeline item is visible */
+.timeline-item.visible .tab-toggle {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition-delay: 0.6s;
+}
+
+.tab-toggle:hover {
+  background: var(--color-dusty-rose);
+  color: white;
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 2px 6px rgba(184, 134, 107, 0.2);
+}
+
+
+
+/* Details Content Styling */
+.details-content .timeline-header h3 {
+  color: var(--color-dusty-rose);
+}
+
+/* Details Panel - side panel next to job */
+.details-panel {
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-50%) scale(0.9) translateX(30px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.details-panel.active {
+  opacity: 1;
+  transform: translateY(-50%) scale(1) translateX(0);
+  pointer-events: auto;
+}
+
+/* Position details panel on opposite side */
+.timeline-item.left .details-panel {
+  left: 55%;
+}
+
+.timeline-item.right .details-panel {
+  left: 0;
+}
+
+.details-panel .details-content {
+  width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-cream) 0%, white 100%);
+  border: 2px solid var(--color-dusty-rose);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(168, 155, 138, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+.details-panel.active .details-content {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.15s;
+}
+
+.details-panel .details-content:hover {
+  transform: translateY(-5px);
+}
+
+/* Bullet List */
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--color-dark);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.6s ease;
+}
+
+/* Animate bullet points when timeline item is visible */
+.timeline-item.visible .bullet-list li:nth-child(1) { 
+  opacity: 1; 
+  transform: translateX(0);
+  transition-delay: 0.2s;
+}
+.timeline-item.visible .bullet-list li:nth-child(2) { 
+  opacity: 1; 
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
+.timeline-item.visible .bullet-list li:nth-child(3) { 
+  opacity: 1; 
+  transform: translateX(0);
+  transition-delay: 0.4s;
+}
+.timeline-item.visible .bullet-list li:nth-child(4) { 
+  opacity: 1; 
+  transform: translateX(0);
+  transition-delay: 0.5s;
+}
+
+.bullet-list li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-dusty-rose);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.bullet-list li:last-child {
+  margin-bottom: 0;
+}
+
 .technologies {
   display: flex;
   flex-wrap: wrap;
@@ -140,6 +303,13 @@
     left: 60px;
   }
 
+  .details-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    margin-top: 1rem;
+  }
 
 }
 

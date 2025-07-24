@@ -38,18 +38,6 @@ const Contact = () => {
       title: "Email",
       value: "gialama.vaia@gmail.com",
       link: "mailto:gialama.vaia@gmail.com"
-    },
-    {
-      icon: "📱",
-      title: "Phone",
-      value: "+306979356813 / +31625225060",
-      link: "tel:+306979356813"
-    },
-    {
-      icon: "📍",
-      title: "Location",
-      value: "Maastricht, Netherlands",
-      link: null
     }
   ];
 
@@ -118,13 +106,13 @@ const Contact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-icon"
+                    title={social.name}
                   >
                     {social.type === "svg" ? (
                       <img src={social.icon} alt={social.name} className="social-svg-icon" />
                     ) : (
                       <span>{social.icon}</span>
                     )}
-                    <span className="social-name">{social.name}</span>
                   </a>
                 ))}
               </div>

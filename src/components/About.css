@@ -54,7 +54,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
-  margin: 2rem 0;
+  margin: 3rem 0 0 0;
 }
 
 .detail-item {
@@ -82,8 +82,63 @@
   margin-bottom: 0.25rem;
 }
 
+/* GPA Hover Effect */
+.education-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.education-item::after {
+  content: 'ℹ';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-dusty-rose);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.education-item:hover::after {
+  opacity: 1;
+}
+
+.gpa-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, var(--color-dusty-rose) 0%, var(--color-taupe) 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+}
+
+.education-item:hover .gpa-info {
+  transform: translateY(0);
+}
+
+.gpa-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.gpa-text:last-child {
+  margin-bottom: 0;
+}
+
 .about-cta {
   margin-top: 2rem;
+}
+
+/* Additional spacing for the new layout */
+.about-content {
+  margin-bottom: 1rem;
 }
 
 .about-image {

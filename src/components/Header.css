@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -22,11 +22,27 @@
   transition: all 0.3s ease;
 }
 
-.nav-brand h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0;
-  color: white;
+.navbar.scrolled {
+  background: rgba(248, 246, 242, 0.95);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  height: 80px;
+  width: 160px;
+  object-fit: flex;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled .nav-logo {
+  height: 70px;
+  width: 140px;
 }
 
 .nav-menu {
@@ -54,9 +70,18 @@
   transition: all 0.3s ease;
 }
 
+.navbar.scrolled .nav-list li button {
+  color: var(--color-text);
+}
+
 .nav-list li button:hover {
   background: rgba(248, 246, 242, 0.2);
   transform: translateY(-2px);
+}
+
+.navbar.scrolled .nav-list li button:hover {
+  background: rgba(184, 134, 107, 0.2);
+  color: var(--color-dusty-rose);
 }
 
 .nav-toggle {
@@ -193,6 +218,11 @@
     padding: 1rem;
   }
 
+  .nav-logo {
+    height: 60px;
+    width: 120px;
+  }
+
   .nav-menu {
     position: fixed;
     top: 70px;
@@ -205,6 +235,10 @@
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 2rem;
+  }
+
+  .navbar.scrolled .nav-menu {
+    background: rgba(248, 246, 242, 0.98);
   }
 
   .nav-menu.active {
@@ -221,6 +255,10 @@
     width: 100%;
     padding: 1rem;
     font-size: 1.1rem;
+  }
+
+  .navbar.scrolled .nav-list li button {
+    color: var(--color-text);
   }
 
   .nav-toggle {
@@ -258,6 +296,11 @@
 }
 
 @media (max-width: 480px) {
+  .nav-logo {
+    height: 50px;
+    width: 100px;
+  }
+
   .hero-title {
     font-size: 2rem;
   }
