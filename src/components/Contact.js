@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 import linkedinIcon from '../assets/icons/linkedin.svg';
 import researchgateIcon from '../assets/icons/researchgate.svg';
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,11 +15,19 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    let fieldName = name;
+    
+    // Map EmailJS field names to our state names
+    if (name === 'user_name') fieldName = 'name';
+    if (name === 'user_email') fieldName = 'email';
+    
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [fieldName]: value
     });
   };
 
@@ -25,21 +35,37 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      alert('Thank you for your message! I will get back to you soon.');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setIsSubmitting(false);
-    }, 1000);
+    emailjs.sendForm(
+      'service_bj9u0v4',
+      'template_qqg54oi',
+      form.current,
+      'o4qm3LVXE7X_4PIsd'
+    )
+      .then((result) => {
+        console.log('SUCCESS!', result.text);
+        setPopupMessage('Email sent successfully! I will get back to you soon.');
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 3000);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setIsSubmitting(false);
+      }, (error) => {
+        console.log('FAILED...', error.text);
+        setPopupMessage('Failed to send email. Please try again or contact me directly.');
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 3000);
+        setIsSubmitting(false);
+      });
   };
 
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText('gialama.vaia@gmail.com');
+      setPopupMessage('Email copied to clipboard!');
       setShowPopup(true);
       setTimeout(() => setShowPopup(false), 2000);
     } catch (err) {
       console.error('Failed to copy email:', err);
+      setPopupMessage('Failed to copy email. Please copy manually: gialama.vaia@gmail.com');
       setShowPopup(true);
       setTimeout(() => setShowPopup(false), 2000);
     }
@@ -70,7 +96,7 @@ const Contact = () => {
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/vaia-gialama",
+      url: "https://www.linkedin.com/in/gialamavaia-biologist-in-neuroscience",
       icon: linkedinIcon,
       type: "svg"
     },
@@ -87,7 +113,7 @@ const Contact = () => {
       {/* Custom Popup */}
       {showPopup && (
         <div className="copy-popup">
-          <span>Email copied to clipboard!</span>
+          <span>{popupMessage}</span>
         </div>
       )}
       <div className="container">
@@ -146,11 +172,11 @@ const Contact = () => {
 
           <div className="contact-form">
             <h3>Send Inquiry</h3>
-            <form onSubmit={handleSubmit}>
+            <form ref={form} onSubmit={handleSubmit}>
               <div className="form-group">
                 <input
                   type="text"
-                  name="name"
+                  name="user_name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your Name"
@@ -161,7 +187,7 @@ const Contact = () => {
               <div className="form-group">
                 <input
                   type="email"
-                  name="email"
+                  name="user_email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Your Email"

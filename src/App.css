@@ -145,8 +145,8 @@ body {
   
   .section-header h2 {
     font-size: 2rem;
-  }
-  
+}
+
   .section-header p {
     font-size: 1rem;
   }
@@ -181,8 +181,8 @@ body {
     background-size: cover !important;
     background-position: center top !important;
     opacity: 0.4 !important;
-  }
-  
+}
+
   /* Ensure sections with pattern work on mobile */
   .section-with-pattern[style*="background-image"] {
     background-attachment: scroll !important;

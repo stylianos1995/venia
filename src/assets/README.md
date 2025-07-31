@@ -64,3 +64,4 @@ import resume from "../assets/documents/resume.pdf";
 3. **Keep file sizes small** for better performance
 4. **Use appropriate formats** (SVG for icons, WebP for photos when possible)
 5. **Organize files** in appropriate subdirectories
+ 
