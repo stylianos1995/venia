@@ -59,6 +59,63 @@
   border-radius: 50%;
 }
 
+.copy-button {
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--color-dusty-rose) 0%, var(--color-taupe) 100%);
+  transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(184, 134, 107, 0.3);
+}
+
+.compact-email {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.compact-email:hover {
+  background: rgba(184, 134, 107, 0.1);
+  border-radius: 8px;
+}
+
+.email-hint {
+  font-size: 0.9rem;
+  color: var(--color-taupe);
+  font-style: italic;
+}
+
+/* Custom Popup */
+.copy-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--color-dusty-rose) 0%, var(--color-taupe) 100%);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(184, 134, 107, 0.3);
+  z-index: 3000;
+  animation: slideInRight 0.3s ease;
+  font-weight: 500;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .contact-text h4 {
   font-size: 1.1rem;
   font-weight: 600;
@@ -97,17 +154,18 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: white;
+  background: none;
   color: var(--color-dusty-rose);
   text-decoration: none;
-  border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(168, 155, 138, 0.1);
+  border: none;
+  box-shadow: none;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .social-icon:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(184, 134, 107, 0.2);
+  color: var(--color-taupe);
 }
 
 .social-icon span:first-child {
@@ -201,13 +259,29 @@
   }
 
   .social-icons {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
+    gap: 2rem;
   }
 
   .social-icon {
-    width: 200px;
-    justify-content: center;
+    width: auto;
+    height: auto;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+  }
+
+  .social-svg-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .social-icon span:first-child {
+    font-size: 1.6rem;
   }
 
   .contact-form {

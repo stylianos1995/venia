@@ -86,11 +86,25 @@ const Experience = () => {
       if (ref) observer.observe(ref);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      // Restore body scroll when component unmounts
+      document.body.style.overflow = '';
+    };
   }, []);
 
   const toggleTab = (jobId) => {
-    setActiveTab(activeTab === jobId ? null : jobId);
+    const newActiveTab = activeTab === jobId ? null : jobId;
+    setActiveTab(newActiveTab);
+    
+    // Prevent body scroll when popup is active on mobile
+    if (window.innerWidth <= 768) {
+      if (newActiveTab) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
   };
 
   return (

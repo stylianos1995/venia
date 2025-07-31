@@ -12,6 +12,7 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -32,6 +33,18 @@ const Contact = () => {
     }, 1000);
   };
 
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('gialama.vaia@gmail.com');
+      setShowPopup(true);
+      setTimeout(() => setShowPopup(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy email:', err);
+      setShowPopup(true);
+      setTimeout(() => setShowPopup(false), 2000);
+    }
+  };
+
   const contactInfo = [
     {
       icon: "📧",
@@ -42,6 +55,13 @@ const Contact = () => {
   ];
 
   const socialLinks = [
+    {
+      name: "Email",
+      url: "#",
+      icon: "📧",
+      type: "emoji",
+      action: copyEmail
+    },
     {
       name: "The NeuroProject VP",
       url: "https://theneuroprojectvp.wordpress.com/",
@@ -64,6 +84,12 @@ const Contact = () => {
 
   return (
     <section className="contact" id="contact">
+      {/* Custom Popup */}
+      {showPopup && (
+        <div className="copy-popup">
+          <span>Email copied to clipboard!</span>
+        </div>
+      )}
       <div className="container">
         <div className="section-header">
           <h2>Contact Me</h2>
@@ -78,42 +104,41 @@ const Contact = () => {
               Whether you have a research question or want to explore potential collaborations, feel free to reach out!
             </p>
 
-            <div className="contact-details">
-              {contactInfo.map((info, index) => (
-                <div key={index} className="contact-item">
-                  <span className="contact-icon">{info.icon}</span>
-                  <div className="contact-text">
-                    <h4>{info.title}</h4>
-                    {info.link ? (
-                      <a href={info.link} target="_blank" rel="noopener noreferrer">
-                        {info.value}
-                      </a>
-                    ) : (
-                      <span>{info.value}</span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+
 
             <div className="social-links">
               <h4>Connect With Me</h4>
               <div className="social-icons">
                 {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon"
-                    title={social.name}
-                  >
-                    {social.type === "svg" ? (
-                      <img src={social.icon} alt={social.name} className="social-svg-icon" />
-                    ) : (
-                      <span>{social.icon}</span>
-                    )}
-                  </a>
+                  social.action ? (
+                    <button
+                      key={index}
+                      onClick={social.action}
+                      className="social-icon"
+                      title={social.name}
+                    >
+                      {social.type === "svg" ? (
+                        <img src={social.icon} alt={social.name} className="social-svg-icon" />
+                      ) : (
+                        <span>{social.icon}</span>
+                      )}
+                    </button>
+                  ) : (
+                    <a
+                      key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-icon"
+                      title={social.name}
+                    >
+                      {social.type === "svg" ? (
+                        <img src={social.icon} alt={social.name} className="social-svg-icon" />
+                      ) : (
+                        <span>{social.icon}</span>
+                      )}
+                    </a>
+                  )
                 ))}
               </div>
             </div>
