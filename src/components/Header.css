@@ -23,9 +23,9 @@
 }
 
 .navbar.scrolled {
-  background: rgba(248, 246, 242, 0.95);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(248, 246, 242, 0.12);
+  backdrop-filter: blur(12px);
+  box-shadow: none;
 }
 
 .nav-brand {
@@ -34,15 +34,16 @@
 }
 
 .nav-logo {
-  height: 80px;
-  width: 160px;
-  object-fit: flex;
+  height: 40px;
+  width: auto;
+  max-width: 80px;
+  object-fit: contain;
   transition: all 0.3s ease;
 }
 
 .navbar.scrolled .nav-logo {
-  height: 70px;
-  width: 140px;
+  height: 35px;
+  max-width: 70px;
 }
 
 .nav-menu {
@@ -228,8 +229,13 @@
   }
 
   .nav-logo {
-    height: 60px;
-    width: 120px;
+    height: 30px;
+    max-width: 60px;
+  }
+
+  .navbar.scrolled .nav-logo {
+    height: 28px;
+    max-width: 56px;
   }
 
   .nav-menu {
@@ -381,8 +387,8 @@
 
 @media (max-width: 480px) {
   .nav-logo {
-    height: 50px;
-    width: 100px;
+    height: 25px;
+    max-width: 50px;
   }
 
   .hero-title {

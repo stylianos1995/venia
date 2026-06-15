@@ -1,5 +1,6 @@
 import React from 'react';
 import './About.css';
+import profilePhoto from '../assets/images/profile-photo.jfif';
 
 const About = () => {
   return (
@@ -37,12 +38,11 @@ const About = () => {
           </div>
           
           <div className="about-image">
-            <div className="image-placeholder">
-              <div className="placeholder-content">
-                <span>Profile Photo</span>
-                <p>Add your photo here</p>
-              </div>
-            </div>
+            <img
+              src={profilePhoto}
+              alt="Vaia Gialama"
+              className="profile-photo"
+            />
           </div>
         </div>
 

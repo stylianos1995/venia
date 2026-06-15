@@ -8,6 +8,20 @@ const Experience = () => {
 
   const experiences = [
     {
+      id: 5,
+      title: "Biotech Associate",
+      company: "Lonza",
+      period: "01/2026 - Present",
+      description: "Supporting biologics manufacturing operations in a GMP-regulated environment. Executing aseptic techniques, batch documentation, and quality control procedures to ensure compliance with pharmaceutical standards.",
+      technologies: ["GMP Compliance", "Aseptic Techniques", "Biologics Manufacturing", "Batch Documentation"],
+      bulletPoints: [
+        "Support biologics manufacturing operations",
+        "Execute aseptic techniques in cleanroom environment",
+        "Maintain GMP-compliant batch documentation",
+        "Perform quality control procedures"
+      ]
+    },
+    {
       id: 1,
       title: "Research Intern",
       company: "University of Liège",

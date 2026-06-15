@@ -4,6 +4,10 @@ import './Contact.css';
 import linkedinIcon from '../assets/icons/linkedin.svg';
 import researchgateIcon from '../assets/icons/researchgate.svg';
 
+const EMAILJS_SERVICE_ID = 'service_bj9u0v4';
+const EMAILJS_PUBLIC_KEY = 'o4qm3LVXE7X_4PIsd';
+const EMAILJS_TEMPLATE_CONTACT = 'template_98k3ke3';
+
 const Contact = () => {
   const form = useRef();
   const [formData, setFormData] = useState({
@@ -34,21 +38,21 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     emailjs.sendForm(
-      'service_bj9u0v4',
-      'template_qqg54oi',
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_CONTACT,
       form.current,
-      'o4qm3LVXE7X_4PIsd'
+      EMAILJS_PUBLIC_KEY
     )
-      .then((result) => {
-        console.log('SUCCESS!', result.text);
+      .then(() => {
         setPopupMessage('Email sent successfully! I will get back to you soon.');
         setShowPopup(true);
         setTimeout(() => setShowPopup(false), 3000);
         setFormData({ name: '', email: '', subject: '', message: '' });
         setIsSubmitting(false);
-      }, (error) => {
+      })
+      .catch((error) => {
         console.log('FAILED...', error.text);
         setPopupMessage('Failed to send email. Please try again or contact me directly.');
         setShowPopup(true);
@@ -173,6 +177,7 @@ const Contact = () => {
           <div className="contact-form">
             <h3>Send Inquiry</h3>
             <form ref={form} onSubmit={handleSubmit}>
+              <input type="hidden" name="email" value={formData.email} />
               <div className="form-group">
                 <input
                   type="text"

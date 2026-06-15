@@ -1,0 +1,38 @@
+<!--
+  EmailJS Contact Notification Template (to you)
+  Paste into: Email Templates → Contact Notification → Content (HTML mode)
+
+  Template settings:
+  - To Email:    gialama.vaia@gmail.com
+  - From Name:   {{user_name}}
+  - Reply To:    {{user_email}}
+  - Subject:     New portfolio inquiry: {{subject}}
+-->
+<div style="margin:0;padding:0;background-color:#f5f1eb;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:#f5f1eb;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:560px;background-color:#ffffff;border-radius:12px;overflow:hidden;">
+          <tr>
+            <td style="padding:28px 32px 8px;">
+              <h1 style="margin:0;font-size:20px;color:#31473a;">New portfolio inquiry</h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:8px 32px 24px;">
+              <p style="margin:0 0 12px;font-size:14px;color:#4a4a4a;line-height:1.6;">
+                <strong>Name:</strong> {{user_name}}<br />
+                <strong>Email:</strong> {{user_email}}<br />
+                <strong>Subject:</strong> {{subject}}
+              </p>
+              <div style="background-color:#f8f6f2;border-radius:8px;padding:16px 20px;">
+                <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#8a7f72;font-weight:600;">Message</p>
+                <p style="margin:0;font-size:14px;line-height:1.6;color:#4a4a4a;white-space:pre-wrap;">{{message}}</p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -6,6 +6,7 @@ import Experience from './components/Experience';
 import Research from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
+import BackToTop from './components/BackToTop';
 import heroImage from './assets/images/hero.png';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Research />
       <Skills className="section-with-pattern" style={{ backgroundImage: `url(${heroImage})` }} />
       <Contact />
+      <BackToTop />
     </div>
   );
 }
